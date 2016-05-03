@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get    '/albums/:id/edit' => 'albums#edit'
   patch  '/albums/:id' => 'albums#update'
 
+  resources :users, :only => [:new, :create]
+
   # get    '/albums/by_year/:year' => 'albums#by_year' # might reuse a view from a prev action, 
   # but it would get its own method in the controller
 

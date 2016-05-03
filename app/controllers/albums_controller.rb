@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   def index
-    @albums = Album.order(artist: :asc)
+    @albums = Album.order(title: :asc)
   end
 
   def show
