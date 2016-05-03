@@ -1,0 +1,13 @@
+<h1>Here's a big list of albums</h1>
+
+<ul>
+  <% @albums.each do |album| %>
+    <li>
+    <%= album.artist %>: <%= link_to album.title, album_path(album.id) %>
+    </li>
+  <% end %>
+</ul>
+
+<!-- dont make link in loop like "/albums/#{album.id}" because it's not re-usable or maintainable -->
+
+<!-- album_path should dynamically generate a route that matches a route name that we gave it -->

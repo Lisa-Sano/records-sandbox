@@ -1,0 +1,2 @@
+module BestDogHelper
+end
