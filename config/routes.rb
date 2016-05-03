@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   patch  '/albums/:id' => 'albums#update'
 
   resources :users, :only => [:new, :create]
+  resources :sessions, :only => [:create]
+  delete "/logout" => "sessions#destroy"
+  get    "/login"  => "sessions#new"
 
   # get    '/albums/by_year/:year' => 'albums#by_year' # might reuse a view from a prev action, 
   # but it would get its own method in the controller

@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  # returns either user instance or false
   def self.log_in(email, password)
     somebody = find_by(email: email)
 
