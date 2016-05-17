@@ -15,6 +15,10 @@ CSV.foreach(FILE_PATH, headers: true) do |row|
   row_hash = row.to_h
   artist_name = row_hash.delete("artist")
 
+  if artist_name[0, 4] == 'The '
+    artist_name = artist_name.gsub(/^The\s+/, '') + ', The'
+  end
+
   artist = Artist.find_or_create_by(name: artist_name)
   artist.albums << Album.create(row_hash)
 end

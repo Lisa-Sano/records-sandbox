@@ -1,7 +1,5 @@
 <h1>Hi! Let's make a new Album</h1>
 
-<pre><%= params %></pre>  <!-- will show the params hash without pre-formatting -->
-
 <!-- this will show failed validations -->
 <% if @album.errors.any? %>
   <ul class="errors">
@@ -14,14 +12,21 @@
 <% end %>
 
 <%= form_for @album do |f| %>
-  <%= f.label :artist %>
-  <%= f.collection_select(:artist_id @artists, :id, :name) %>
+  <div class="input-group">
+    <span class="input-group-addon" id="album_artist">Artist</span>
+      <%= f.collection_select(:artist_id, @artists, :id, :name, {}, { class: "form-control", :'aria-describedby' => 'album_artist'}) %>
+  </div>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+  <div class="input-group">
+    <%= f.label :title, class: "input-group-addon" %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
 
-  <%= f.label :label_code %>
-  <%= f.text_field :label_code %>  
+  <div class="input-group">
+    <%= f.label :label_code, class: "input-group-addon" %>
+    <%= f.text_field :label_code, class: "form-control" %>  
+  </div>
 
-  <%= f.submit %>
+
+  <%= f.submit class: "btn btn-success" %>
 <% end %>

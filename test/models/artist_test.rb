@@ -2,6 +2,14 @@ require 'test_helper'
 require 'pry'
 
 class ArtistTest < ActiveSupport::TestCase
+  test "artist names are normalized on create" do
+    clash = Artist.new(name: "The Clash")
+    assert_equal clash.name, "The Clash"
+
+    clash.save
+    assert_equal "Clash, The", clash.name
+  end
+
   test "artist can have albums" do
     # binding.pry # interrupts code and gives a console so i can see scope
     assert_includes artists(:the_clash).albums, albums(:combat_rock)

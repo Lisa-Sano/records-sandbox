@@ -2,18 +2,26 @@
 <html>
 <head>
   <title>RecordsSandbox</title>
+  <!-- link from bootstrap CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= "Hi #{current_user.name }!" if current_user %>
-<%= link_to "Home", root_path %>
-<%= link_to "Log In", login_path unless current_user %>
-<%= link_to "New Album", albums_new_path if current_user %>
-<%= link_to "Log Out", logout_path, method: :delete if current_user %>
+  <main class="container">
+    <%= "Hi #{current_user.name }!" if current_user %>
+    <nav class="navbar navbar-default">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Log In", login_path unless current_user %></li>
+        <li><%= link_to "New Album", albums_new_path if current_user %></li>
+        <li><%= link_to "Log Out", logout_path, method: :delete if current_user %></li>
+      </ul>
+    </nav>
 
-<%= yield %>
+    <%= yield %>
 
+  </main>
 </body>
 </html>
